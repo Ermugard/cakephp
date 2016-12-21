@@ -41,7 +41,7 @@ class ValuesExpression implements ExpressionInterface
      * @var array
      */
     protected $_values = [];
-Q
+
     /**
      * List of columns to ensure are part of the insert.
      *
