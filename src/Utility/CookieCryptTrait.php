@@ -97,7 +97,7 @@ trait CookieCryptTrait
      * @param array $values Values to decrypt
      * @param string|bool $mode Encryption mode
      * @param string|null $key Used as the security salt if specified.
-     * @return string decrypted string
+     * @return array Decrypted values
      */
     protected function _decrypt($values, $mode, $key = null)
     {
@@ -119,7 +119,7 @@ trait CookieCryptTrait
      * @param string $value The value to decode & decrypt.
      * @param string|false $encrypt The encryption cipher to use.
      * @param string|null $key Used as the security salt if specified.
-     * @return string Decoded value.
+     * @return array Decoded values.
      */
     protected function _decode($value, $encrypt, $key)
     {
@@ -166,7 +166,7 @@ trait CookieCryptTrait
         if ($first === '{' || $first === '[') {
             $ret = json_decode($string, true);
 
-            return ($ret !== null) ? $ret : $string;
+            return ($ret !== null) ? $ret : (array)$string;
         }
         $array = [];
         foreach (explode(',', $string) as $pair) {

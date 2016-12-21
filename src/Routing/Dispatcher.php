@@ -58,11 +58,12 @@ class Dispatcher
     {
         $actionDispatcher = new ActionDispatcher(null, $this->eventManager(), $this->_filters);
         $response = $actionDispatcher->dispatch($request, $response);
-        if (isset($request->params['return'])) {
-            return $response->body();
+        if (!isset($request->params['return'])) {
+            $response->send();
+            return null;
         }
 
-        return $response->send();
+        return $response->body();
     }
 
     /**

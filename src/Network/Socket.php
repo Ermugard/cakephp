@@ -53,7 +53,7 @@ class Socket
     /**
      * Reference to socket connection resource
      *
-     * @var resource
+     * @var resource|null
      */
     public $connection = null;
 
@@ -326,11 +326,11 @@ class Socket
         for ($written = 0; $written < $totalBytes; $written += $rv) {
             $rv = fwrite($this->connection, substr($data, $written));
             if ($rv === false || $rv === 0) {
-                return $written;
+                return (bool)$written;
             }
         }
 
-        return $written;
+        return (bool)$written;
     }
 
     /**

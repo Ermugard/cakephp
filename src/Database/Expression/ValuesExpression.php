@@ -41,7 +41,7 @@ class ValuesExpression implements ExpressionInterface
      * @var array
      */
     protected $_values = [];
-
+Q
     /**
      * List of columns to ensure are part of the insert.
      *
@@ -60,7 +60,7 @@ class ValuesExpression implements ExpressionInterface
      * Whether or not values have been casted to expressions
      * already.
      *
-     * @var string
+     * @var bool
      */
     protected $_castedExpressions = false;
 
