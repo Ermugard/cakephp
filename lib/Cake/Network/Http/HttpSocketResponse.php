@@ -286,7 +286,11 @@ class HttpSocketResponse implements ArrayAccess {
 			} elseif (strpos($line, ':') !== false) {
 				list($field, $value) = explode(':', $line, 2);
 				$field = $this->_unescapeToken($field);
-			}
+			}       
+			
+			if(!isset($field) || !isset($value)){
+                                continue;
+                        }
 
 			$value = trim($value);
 			if (!isset($header[$field]) || $continuation) {
